@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import managedBean.LoginBean;
+import managedBean.OrganizationBean;
 
 @WebFilter("/adminFilter/*")
 public class AdminFilter implements Filter {
@@ -24,8 +25,9 @@ public class AdminFilter implements Filter {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 		System.out.println("filter called");
+		Object x = httpServletRequest.getSession();
 		LoginBean loginBean = (LoginBean) httpServletRequest.getSession().getAttribute("loginBean");
-
+		OrganizationBean organizationBean = (OrganizationBean) httpServletRequest.getSession().getAttribute("organizationBean");
 		if (loginBean != null && loginBean.getUserDTO() != null) {
 			// and has the role admin
 

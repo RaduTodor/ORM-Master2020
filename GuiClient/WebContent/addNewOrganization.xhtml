@@ -6,27 +6,25 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login</title>
+	<title>Organization Page</title>
 	<h:outputStylesheet name="/css/login.css" />
 </h:head>
 <h:body>
-	<h2 class="title-form-login">Please login</h2>
+	<h2 class="title-form-login">Add new Organization</h2>
 	<br />
-	<h:form label="loginForm" class="form">
-		<label>Username: </label>
-		<h:inputText class="effect-input" required="true" label="Username"
-			placeholder="Username" validatorMessage="Enter username"
-			value="#{loginBean.loginDTO.username}"></h:inputText>
+	<h:form label="newOrganizationForm" class="form">
+		<label>Organization Name: </label>
+		<h:inputText class="effect-input" required="true" label="Organization Name"
+			value="#{organizationBean.organizationDTO.name}"></h:inputText>
 		<br />
 		<br />
-		<label>Password: </label>
-		<h:inputSecret class="effect-input" label="Password" required="true"
-			placeholder="Password" validatorMessage="Enter password"
-			value="#{loginBean.loginDTO.password}"></h:inputSecret>
+		<label>Cui Value: </label>
+		<h:inputText class="effect-input" required="true" label="CUI"
+			value="#{organizationBean.organizationDTO.cui}"></h:inputText>
 		<br />
 		<br />
-		<h:commandButton class="btns" value="Login"
-			action="#{loginBean.loginUser}"></h:commandButton>
+		<h:commandButton value="Add"
+			action="#{organizationBean.addNewOrganization()}"></h:commandButton>
 		<br />
 		<h:messages infoStyle="color:darkgreen" errorStyle="color:darkred"></h:messages>
 	</h:form>

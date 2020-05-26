@@ -6,8 +6,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import com.example.dao.OrganizationDAORemote;
 import com.example.dao.UserDAORemote;
 import com.example.dto.LoginDTO;
+import com.example.dto.OrganizationDTO;
 import com.example.dto.UserDTO;
 import com.example.exception.LoginException;
 
@@ -43,16 +45,17 @@ public class LoginBean {
 		try {
 			userDTO = userDAORemote.loginUser(loginDTO);
 			facesContext.getExternalContext().getSessionMap().put("userDTO", userDTO);
-			// if userDTO is admin
+			if (userDTO.getId() == 1) {
 			System.out.println("admin logged");
 			return "/adminFilter/admin.xhtml?faces-redirect=true";
+			}
+			return "/userFilter/user.xhtml?faces-redirect=true";
 
 		} catch (LoginException e) {
 			System.out.println("Invalid username or password");
 			facesContext.addMessage("loginForm", new FacesMessage(FacesMessage.SEVERITY_ERROR, e.message(), null));
 			return null;
 		}
-
 	}
 
 	public String logout() {

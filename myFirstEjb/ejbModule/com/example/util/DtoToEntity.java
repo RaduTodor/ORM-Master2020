@@ -1,7 +1,8 @@
 package com.example.util;
 
+import com.example.dto.OrganizationDTO;
 import com.example.dto.UserDTO;
-
+import com.bestdb.models.Organisation;
 import com.bestdb.models.User;
 
 public class DtoToEntity {
@@ -14,4 +15,9 @@ public class DtoToEntity {
 		return user;
 	}
 
+	public Organisation convertOrganization(OrganizationDTO orgDTO) {
+		Organisation organisation = new Organisation(orgDTO.getName(), orgDTO.getCui());
+
+		return organisation;
+	}
 }

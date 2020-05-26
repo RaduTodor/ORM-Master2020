@@ -6,25 +6,24 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Admin Page</title>
+	<title>User Page</title>
 	<h:outputStylesheet name="/css/login.css" />
 </h:head>
 <h:body>
-	<h2 class="title-form-login">Admin page</h2>
-	<br />
-	<label>Welcome #{loginBean.loginDTO.username}</label>
-	<br />
-		
-	<h:form label="redirectForm" class="form">		
-		<h:commandButton value="Add new Organization"
-			action="#{organizationBean.goToNewOrganizationPage()}"></h:commandButton>
+
+
+
+
+	
+
+
+		<h2 class="title-form-login">User page</h2>
 		<br />
-	</h:form>
-	<br />
-	<h:form label="logoutForm" class="form">		
-		<h:commandButton value="Log Out!"
-			action="#{loginBean.logout()}"></h:commandButton>
+		<h:inputText class="effect-input" required="true" label="Username"
+			placeholder="Username" validatorMessage="Enter username"
+			value="#{loginBean.loginDTO.username}"></h:inputText>
 		<br />
-	</h:form>
+		<br />
+
 </h:body>
 </html>
