@@ -85,4 +85,17 @@ public class IdentityDao implements IdentityDAORemote {
 		entityManager.remove(identity);
 	}
 
+	@Override
+	public List<IdentityDTO> findAllNotYetRegistered() throws IdentityException {
+		Query query = entityManager.createQuery("SELECT identity FROM Identity identity JOIN User usser WHERE identity.identityId <> usser.identity.identityId");
+		@SuppressWarnings("unchecked")
+		List<Identity> Identitys = query.getResultList();
+		System.out.println(Identitys.toString());
+		List<IdentityDTO> dtoIdentitys = new ArrayList<>();
+		for (Identity identity : Identitys) {
+			dtoIdentitys.add(entityToDTO.convertIdentity(identity));
+		}
+		return dtoIdentitys;
+	}
+
 }

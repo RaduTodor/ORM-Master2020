@@ -18,9 +18,10 @@ import com.example.dto.LoginDTO;
 import com.example.dto.UserDTO;
 import com.example.exception.ChangePasswordException;
 import com.example.exception.LoginException;
+import com.example.exception.NewUserException;
 import com.example.util.DtoToEntity;
 import com.example.util.EntityToDTO;
-
+import com.bestdb.models.Organisation;
 import com.bestdb.models.User;
 
 /**
@@ -128,6 +129,12 @@ public class UserDao implements UserDAORemote {
 			throw new ChangePasswordException("The username is not valid!");
 		}
 
+	}
+
+	@Override
+	public UserDTO addNewUser(UserDTO userDTO) throws NewUserException {
+		entityManager.persist(new User(userDTO.getUsername(), userDTO.getPassword(), userDTO.getIdentityId()));
+		return userDTO;	
 	}
 
 }
