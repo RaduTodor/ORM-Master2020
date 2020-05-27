@@ -10,20 +10,14 @@
 	<h:outputStylesheet name="/css/login.css" />
 </h:head>
 <h:body>
-
-
-
-
-	
-
-
-		<h2 class="title-form-login">User page</h2>
+	<h2 class="title-form-login">User page</h2>
+	<br />
+	<label>Welcome #{loginBean.loginDTO.username}</label>
+	<br />
+	<h:form label="logoutForm" class="form">		
+		<h:commandButton value="Log Out!"
+			action="#{loginBean.logout()}"></h:commandButton>
 		<br />
-		<h:inputText class="effect-input" required="true" label="Username"
-			placeholder="Username" validatorMessage="Enter username"
-			value="#{loginBean.loginDTO.username}"></h:inputText>
-		<br />
-		<br />
-
+	</h:form>
 </h:body>
 </html>

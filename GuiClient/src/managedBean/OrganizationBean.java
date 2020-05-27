@@ -26,7 +26,6 @@ public class OrganizationBean {
 	}
 	
 	public String goToNewOrganizationPage() {
-		System.out.println("ce pushca mea");
 		return "/addNewOrganization.xhtml?faces-redirect=true";
 	}
 	

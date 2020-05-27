@@ -2,6 +2,10 @@ package com.bestdb.models;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.example.dao.OrganizationDao;
+import com.example.util.DtoToEntity;
+
 import java.util.List;
 
 
@@ -32,6 +36,14 @@ public class Identity implements Serializable {
 	private List<User> users;
 
 	public Identity() {
+	}
+	
+	public Identity(String firstname, String lastname, int organisationId) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		Organisation org = new Organisation();
+		org.setOrganisationId(organisationId);
+		this.organisation = org;
 	}
 
 	public int getIdentityId() {

@@ -28,6 +28,14 @@
 		<h:commandButton class="btns" value="Login"
 			action="#{loginBean.loginUser}"></h:commandButton>
 		<br />
+		
+		<br />
+		<br />
+	</h:form>
+	<h:form label="registerForm" class="form">
+		<h:commandButton class="btns" value="Register"
+			action="#{loginBean.goToRegisterPage}"></h:commandButton>
+		<br />
 		<h:messages infoStyle="color:darkgreen" errorStyle="color:darkred"></h:messages>
 	</h:form>
 </h:body>

@@ -1,7 +1,9 @@
 package com.example.util;
 
+import com.example.dto.IdentityDTO;
 import com.example.dto.OrganizationDTO;
 import com.example.dto.UserDTO;
+import com.bestdb.models.Identity;
 import com.bestdb.models.Organisation;
 import com.bestdb.models.User;
 
@@ -19,5 +21,11 @@ public class DtoToEntity {
 		Organisation organisation = new Organisation(orgDTO.getName(), orgDTO.getCui());
 
 		return organisation;
+	}
+	
+	public Identity convertIdentity(IdentityDTO identityDTO) {
+		Identity identity = new Identity(identityDTO.getFirstname(), identityDTO.getLastname(), identityDTO.getOrganisationId());
+
+		return identity;
 	}
 }

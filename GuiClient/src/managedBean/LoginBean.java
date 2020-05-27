@@ -1,5 +1,7 @@
 package managedBean;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +23,9 @@ public class LoginBean {
 
 	@EJB
 	UserDAORemote userDAORemote;
+	
+	@EJB(beanInterface = OrganizationDAORemote.class, name = "OrganizationDao")
+	OrganizationDAORemote OrganizationDAORemote;
 
 	UserDTO userDTO;
 
@@ -46,7 +51,6 @@ public class LoginBean {
 			userDTO = userDAORemote.loginUser(loginDTO);
 			facesContext.getExternalContext().getSessionMap().put("userDTO", userDTO);
 			if (userDTO.getId() == 1) {
-			System.out.println("admin logged");
 			return "/adminFilter/admin.xhtml?faces-redirect=true";
 			}
 			return "/userFilter/user.xhtml?faces-redirect=true";
@@ -56,6 +60,13 @@ public class LoginBean {
 			facesContext.addMessage("loginForm", new FacesMessage(FacesMessage.SEVERITY_ERROR, e.message(), null));
 			return null;
 		}
+	}
+	
+	public String goToRegisterPage() {
+		List<OrganizationDTO> organizationsDTO = OrganizationDAORemote.findAll();
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		facesContext.getExternalContext().getSessionMap().put("organizations", organizationsDTO);
+		return "/register.xhtml?faces-redirect=true";
 	}
 
 	public String logout() {
