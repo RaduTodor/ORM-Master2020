@@ -1,6 +1,8 @@
 package com.example.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -15,6 +17,7 @@ import com.example.exception.IdentityException;
 import com.example.util.DtoToEntity;
 import com.example.util.EntityToDTO;
 import com.bestdb.models.Identity;
+import com.bestdb.models.Organisation;
 
 /**
  * Session Bean implementation class IdentityDAO
@@ -87,10 +90,22 @@ public class IdentityDao implements IdentityDAORemote {
 
 	@Override
 	public List<IdentityDTO> findAllNotYetRegistered() throws IdentityException {
-		Query query = entityManager.createQuery("SELECT identity FROM Identity identity JOIN User usser WHERE identity.identityId <> usser.identity.identityId");
+		Query query = entityManager.createNativeQuery("call bestdb.get_all_unregistered_identities()");
 		@SuppressWarnings("unchecked")
-		List<Identity> Identitys = query.getResultList();
-		System.out.println(Identitys.toString());
+		List<Object> result = (List<Object>) query.getResultList(); 
+		Iterator itr = result.iterator();
+		List<Identity> Identitys = new ArrayList<Identity>();
+		while(itr.hasNext()){
+		   Object[] obj = (Object[]) itr.next();
+		   Identity newIdentity = new Identity();
+		   newIdentity.setFirstname(String.valueOf(obj[2]));
+		   newIdentity.setIdentityId(Integer.parseInt(String.valueOf(obj[0])));
+		   newIdentity.setLastname(String.valueOf(obj[3]));
+		   Organisation org = new Organisation();
+		   org.setOrganisationId(Integer.parseInt(String.valueOf(obj[1])));
+		   newIdentity.setOrganisation(org);
+		   Identitys.add(newIdentity);
+		}
 		List<IdentityDTO> dtoIdentitys = new ArrayList<>();
 		for (Identity identity : Identitys) {
 			dtoIdentitys.add(entityToDTO.convertIdentity(identity));
