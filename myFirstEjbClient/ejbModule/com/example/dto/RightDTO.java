@@ -1,12 +1,14 @@
 package com.example.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class RightDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int rightId;
 	private String rightName;
 	private String rightDescription;
+	private List<RoleDTO> roles;
 
 	public RightDTO() {
 		super();
@@ -34,6 +36,14 @@ public class RightDTO implements Serializable {
 
 	public void setRightDescription(String description) {
 		this.rightDescription = description;
+	}
+	
+	public List<RoleDTO> getRoles() {
+		return this.roles;
+	}
+
+	public void setRoles(List<RoleDTO> roles) {
+		this.roles = roles;
 	}
 
 	public RightDTO(String rightName, String rightDescription) {

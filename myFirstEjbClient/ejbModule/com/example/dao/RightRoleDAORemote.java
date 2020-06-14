@@ -20,6 +20,8 @@ import com.example.exception.NewUserException;
 public interface RightRoleDAORemote{
 
 	List<RightDTO> getAllRights() throws NewRightException;
+		
+	List<RoleDTO> getAllUnusedRoles() throws NewRightException;
 	
 	List<RoleDTO> getAllRoles() throws NewRightException;
 	
