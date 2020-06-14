@@ -37,6 +37,11 @@ public class Right implements Serializable {
 
 	public Right() {
 	}
+	
+	public Right(String rightName, String rightDescription) {
+		this.rightName = rightName;
+		this.rightDescription = rightDescription;
+	}
 
 	public int getRightId() {
 		return this.rightId;

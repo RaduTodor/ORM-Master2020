@@ -47,7 +47,7 @@ public class UserDao implements UserDAORemote {
 	@Override
 	public UserDTO findById(int id) {
 		User user = entityManager.find(User.class, id);
-		UserDTO userDTO = entityToDTO.convertUser(user);
+		UserDTO userDTO = entityToDTO.convertAllDetailsUser(user);
 		return userDTO;
 	}
 
@@ -60,6 +60,19 @@ public class UserDao implements UserDAORemote {
 		List<UserDTO> dtoUsers = new ArrayList<>();
 		for (User user : users) {
 			dtoUsers.add(entityToDTO.convertUser(user));
+		}
+		return dtoUsers;
+	}
+	
+	@Override
+	public List<UserDTO> findAllWithDetails() {
+		Query query = entityManager.createQuery("SELECT u FROM User u");
+		@SuppressWarnings("unchecked")
+		List<User> users = query.getResultList();
+		System.out.println(users.toString());
+		List<UserDTO> dtoUsers = new ArrayList<>();
+		for (User user : users) {
+			dtoUsers.add(entityToDTO.convertAllDetailsUser(user));
 		}
 		return dtoUsers;
 	}

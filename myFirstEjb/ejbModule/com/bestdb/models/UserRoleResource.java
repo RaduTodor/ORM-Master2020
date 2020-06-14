@@ -35,6 +35,18 @@ public class UserRoleResource implements Serializable {
 
 	public UserRoleResource() {
 	}
+	
+	public UserRoleResource(int userId, int roleId, int resourceId) {
+		User user = new User();
+		user.setUserId(userId);
+		Role role = new Role();
+		role.setRoleId(roleId);
+		Resource res = new Resource();
+		res.setResourceId(resourceId);
+		this.user = user;
+		this.role = role;
+		this.resource = res;
+	}
 
 	public int getId() {
 		return this.id;

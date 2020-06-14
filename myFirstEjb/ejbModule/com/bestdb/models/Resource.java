@@ -30,6 +30,12 @@ public class Resource implements Serializable {
 
 	public Resource() {
 	}
+	
+	public Resource(String accessKey, String token, String url) {
+		this.accessKey = accessKey;
+		this.token = token;
+		this.url = url;
+	}
 
 	public int getResourceId() {
 		return this.resourceId;
