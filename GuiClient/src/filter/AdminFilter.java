@@ -24,14 +24,10 @@ public class AdminFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
-		System.out.println("filter called");
 		Object x = httpServletRequest.getSession();
 		LoginBean loginBean = (LoginBean) httpServletRequest.getSession().getAttribute("loginBean");
 		OrganizationBean organizationBean = (OrganizationBean) httpServletRequest.getSession().getAttribute("organizationBean");
 		if (loginBean != null && loginBean.getUserDTO() != null) {
-			// and has the role admin
-
-			System.out.println("admin logged");
 			filterChain.doFilter(servletRequest, servletResponse);
 		} else {
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Manage Right-Role Relation Page</title>
+	<h:outputStylesheet name="/css/login.css" />
+</h:head>
+<h:body>
+	<h2 class="title-form-login">Current Relations</h2>
+		<br />
+		<h:form label="currentRightRoleRelationsForm" class="form">
+		<ui:repeat value="#{rightRoleBean.rights}" var="right">
+		    <ui:repeat value="#{right.roles}" var="role">
+		        <label>#{right.rightName} - #{role.roleName}</label>
+		    </ui:repeat>
+		</ui:repeat>
+	</h:form>
+	<h2 class="title-form-login">Add Right-Role Relation</h2>
+	<br />
+	<h:form label="newRightRoleRelationForm" class="form">
+		<label>Right: </label>
+		<h:selectOneMenu required="true" label="Rights"
+			value="#{rightRoleBean.rightId}">
+			<f:selectItems value="#{rightRoleBean.rights}" var="right" itemValue="#{right.rightId}" itemLabel="#{right.rightName}"/>
+		</h:selectOneMenu>
+		<br />
+		<br />
+		<label>Role: </label>
+		<h:selectOneMenu required="true" label="Roles"
+			value="#{rightRoleBean.roleId}">
+			<f:selectItems value="#{rightRoleBean.roles}" var="role" itemValue="#{role.roleId}" itemLabel="#{role.roleName}"/>
+		</h:selectOneMenu>
+		<br />
+		<br />
+		<h:commandButton value="Add new Right-Role relation"
+			action="#{rightRoleBean.addNewRightRoleRelation()}"></h:commandButton>
+		<br />
+		<h:messages infoStyle="color:darkgreen" errorStyle="color:darkred"></h:messages>
+	</h:form>
+</h:body>
+</html>
