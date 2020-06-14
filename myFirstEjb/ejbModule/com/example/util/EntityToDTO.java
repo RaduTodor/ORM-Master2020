@@ -14,7 +14,7 @@ import java.util.List;
 import com.bestdb.models.Identity;
 import com.bestdb.models.Organisation;
 import com.bestdb.models.Resource;
-import com.bestdb.models.Right;
+import com.bestdb.models.Drept;
 import com.bestdb.models.Role;
 import com.bestdb.models.User;
 import com.bestdb.models.UserRoleResource;
@@ -60,9 +60,15 @@ public class EntityToDTO {
 
 	}
 
-	public RightDTO convertRight(Right right) {
+	public RightDTO convertRight(Drept right) {
 		RightDTO rightDTO = new RightDTO(right.getRightName(), right.getRightDescription());
 
+		List<RoleDTO> roleDTOs = new ArrayList<>();
+		for (Role drept : right.getRoles()) {
+			roleDTOs.add(new RoleDTO(drept.getRoleName(), drept.getRoleDescription()));
+		}
+		
+		rightDTO.setRoles(roleDTOs);
 		rightDTO.setRightId(right.getRightId());
 		return rightDTO;
 

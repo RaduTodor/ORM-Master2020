@@ -24,7 +24,7 @@ public class Role implements Serializable {
 
 	//bi-directional many-to-many association to Right
 	@ManyToMany(mappedBy="roles")
-	private List<Right> rights;
+	private List<Drept> rights;
 
 	//bi-directional many-to-one association to UserRoleResource
 	@OneToMany(mappedBy="role")
@@ -62,11 +62,11 @@ public class Role implements Serializable {
 		this.roleName = roleName;
 	}
 
-	public List<Right> getRights() {
+	public List<Drept> getRights() {
 		return this.rights;
 	}
 
-	public void setRights(List<Right> rights) {
+	public void setRights(List<Drept> rights) {
 		this.rights = rights;
 	}
 

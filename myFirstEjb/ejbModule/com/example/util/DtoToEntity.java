@@ -10,7 +10,7 @@ import com.example.dto.UserRoleResourceDTO;
 import com.bestdb.models.Identity;
 import com.bestdb.models.Organisation;
 import com.bestdb.models.Resource;
-import com.bestdb.models.Right;
+import com.bestdb.models.Drept;
 import com.bestdb.models.Role;
 import com.bestdb.models.User;
 import com.bestdb.models.UserRoleResource;
@@ -37,8 +37,8 @@ public class DtoToEntity {
 		return identity;
 	}
 	
-	public Right convertRight(RightDTO rightDTO) {
-		Right right = new Right(rightDTO.getRightName(), rightDTO.getRightDescription());
+	public Drept convertRight(RightDTO rightDTO) {
+		Drept right = new Drept(rightDTO.getRightName(), rightDTO.getRightDescription());
 
 		return right;
 	}

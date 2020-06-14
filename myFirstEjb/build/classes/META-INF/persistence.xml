@@ -5,7 +5,7 @@
 		<class>com.bestdb.models.Identity</class>
 		<class>com.bestdb.models.Organisation</class>
 		<class>com.bestdb.models.Resource</class>
-		<class>com.bestdb.models.Right</class>
+		<class>com.bestdb.models.Drept</class>
 		<class>com.bestdb.models.Role</class>
 		<class>com.bestdb.models.User</class>
 		<class>com.bestdb.models.UserRoleResource</class>
