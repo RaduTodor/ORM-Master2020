@@ -1,6 +1,7 @@
 package com.example.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -8,10 +9,20 @@ public class UserDTO implements Serializable {
 	private String username;
 	private String password;
     private int identityId;
+    private List<UserRoleResourceDTO> userRoleResource;
     
 	public UserDTO() {
 		super();
 	}
+	
+	public List<UserRoleResourceDTO> getUserRoleResource() {
+		return userRoleResource;
+	}
+
+	public void setUserRoleResource(List<UserRoleResourceDTO> userRoleResource) {
+		this.userRoleResource = userRoleResource;
+	}
+	
 
 	public int getId() {
 		return id;
