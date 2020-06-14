@@ -124,7 +124,7 @@ public class UserRoleResourceBean {
 	}
 	
 	public String goToManageUserRoleResourceRelationPage() {
-		return "/manageUserRoleResourceRelation.xhtml?faces-redirect=true";
+		return "/manageUserRoleResourceRelation.xhtml";
 	}
 	
 	public String addNewUserRoleResourceRelation() {

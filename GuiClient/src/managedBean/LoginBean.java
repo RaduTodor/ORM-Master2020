@@ -12,6 +12,7 @@ import com.example.dao.OrganizationDAORemote;
 import com.example.dao.UserDAORemote;
 import com.example.dto.LoginDTO;
 import com.example.dto.OrganizationDTO;
+import com.example.dto.UserRoleResourceDTO;
 import com.example.dto.UserDTO;
 import com.example.exception.LoginException;
 
@@ -20,12 +21,17 @@ import com.example.exception.LoginException;
 public class LoginBean {
 
 	LoginDTO loginDTO = new LoginDTO();
+	
+	List<UserRoleResourceDTO> relations;
 
 	@EJB
 	UserDAORemote userDAORemote;
 	
 	@EJB(beanInterface = OrganizationDAORemote.class, name = "OrganizationDao")
 	OrganizationDAORemote OrganizationDAORemote;
+	
+	@EJB(beanInterface = UserDAORemote.class, name = "UserDao")
+	UserDAORemote UserDAORemote;
 
 	UserDTO userDTO;
 
@@ -43,6 +49,16 @@ public class LoginBean {
 
 	public void setUserDTO(UserDTO userDTO) {
 		this.userDTO = userDTO;
+	}
+	
+	public List<UserRoleResourceDTO> getRelations(){
+		UserDTO user = UserDAORemote.findById(this.userDTO.getId());	
+		this.relations = user.getUserRoleResource();
+		return this.relations;
+	}
+	
+	public void setRelations(List<UserRoleResourceDTO> relations) {
+		this.relations = relations;
 	}
 
 	public String loginUser() {

@@ -14,6 +14,15 @@
 	<br />
 	<label>Welcome #{loginBean.loginDTO.username}</label>
 	<br />
+	
+	<h2 class="title-form-login">Current Rights</h2>
+		<br />
+		<h:form label="currentRightsForm" class="form">
+		<ui:repeat value="#{loginBean.relations}" var="relation">
+	        <label>#{relation.roleName} - #{relation.url} </label>
+		</ui:repeat>
+	</h:form>
+	
 	<h:form label="logoutForm" class="form">		
 		<h:commandButton value="Log Out!"
 			action="#{loginBean.logout()}"></h:commandButton>

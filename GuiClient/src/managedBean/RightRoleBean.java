@@ -30,7 +30,8 @@ public class RightRoleBean {
 	RightRoleDAORemote RightRoleDAORemote;
 
 	public List<RightDTO> getrights() {
-		return RightRoleDAORemote.getAllRights();
+		this.rights = RightRoleDAORemote.getAllRights();
+		return this.rights;
 	}
 
 	public void setrights(List<RightDTO> rights) {
@@ -53,7 +54,7 @@ public class RightRoleBean {
 		this.rightId = id;
 	}
 	
-	public int getRoletId() {
+	public int getRoleId() {
 		return this.roleId;
 	}
 	
